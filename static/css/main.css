@@ -18,3 +18,7 @@ body {
     0% {opacity: 0;}
     100% {opacity: 100;}
 }
+
+.dark-filter {
+    filter: brightness(80%) opacity(0.85);
+}
