@@ -19,3 +19,8 @@ def product(request, pk):
 def cart(request):
     context = {}
     return render(request, 'store/cart.html', context=context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, 'store/checkout.html', context=context)
