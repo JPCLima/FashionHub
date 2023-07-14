@@ -1,0 +1,145 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row py-5 g-5">
+    <div class="col-12 col-lg-6">
+        <img    src="{% static 'images/jacket1-1.jpg' %}"  
+                class="m-1 w-100 sliderMainImage" 
+                data-bs-toggle="modal" 
+                data-bs-target="#imageModal" 
+                alt="product">
+        <div>
+            <img    src="{% static 'images/jacket1-2.jpg' %}"  
+                    width="60"
+                    class="m-1 sliderThumb"
+                    alt="product">
+                    <img    src="{% static 'images/jacket1-3.jpg' %}"  
+                    width="60"
+                    class="m-1 sliderThumb"
+                    alt="product">
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-6">
+        <h2 id="productName">Brown Jacket</h2>
+        <small class="text-muted">Article: 24344</small>
+        <h4 class="my-4">EUR
+            <span id="price">149</span>
+            €
+        </h4>
+        <lable class="text-muted" for="selectedSize" id="size">Size: </lable>
+        <select name="selectSize" id="size" class="form-select">
+            <option selected>S</option>
+            <option value="1">M</option>
+            <option value="2">XL</option>
+            <option value="3">XXL</option>
+        </select>
+        <div class="d-grid my-4">
+            <button class="btn btn-dark btn-lg" type="button" id="bagBtn">Add to Bag</button>
+        </div>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Description
+                        </button>
+                      </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Availability in the store
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Delivery and returns
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Size and Fit
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>        
+    </div>     
+</div>
+
+<h2 class="display-6 py-5 text-center">You May Also Like</h2>
+
+<div class="d-flex justify-content-between align-items-center flex-column flex-lg-row container">
+
+    <div class="card md-2">
+        <a href="#">
+            <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
+        </a>
+        <div class="card-body">
+            <p class="card-text">Brown Jacket</p>
+            <small class="text-secondary">29,99 EUR</small>
+        </div>
+    </div>
+    <div class="card md-2">
+        <a href="#">
+            <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
+        </a>
+        <div class="card-body">
+            <p class="card-text">Brown Jacket</p>
+            <small class="text-secondary">29,99 EUR</small>
+        </div>
+    </div>
+    <div class="card md-2">
+        <a href="#">
+            <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
+        </a>
+        <div class="card-body">
+            <p class="card-text">Brown Jacket</p>
+            <small class="text-secondary">29,99 EUR</small>
+        </div>
+    </div>
+    <div class="card md-2">
+        <a href="#">
+            <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
+        </a>
+        <div class="card-body">
+            <p class="card-text">Brown Jacket</p>
+            <small class="text-secondary">29,99 EUR</small>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+{% endblock content %}
