@@ -14,3 +14,8 @@ def productList(request):
 def product(request, pk):
     context = {}
     return render(request, 'store/product.html', context=context)
+
+
+def cart(request):
+    context = {}
+    return render(request, 'store/cart.html', context=context)

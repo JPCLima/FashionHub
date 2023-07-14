@@ -1,0 +1,44 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row container mt-4">
+    <div class="col col-lg-9 text-start">
+        <div class="col">
+
+            <a href="" class="btn btn-outline-dark">&#x2190; Continue Shopping</a>
+        </div>
+        <table class="table mt-4">
+            <th>
+                
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </th>
+            <tr>
+                <td></td>
+                <td>Brown Jacket</td>
+                <td>150 €</td>
+                <td>2</td>
+                <td>300 €</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col col-3 text-start">
+        
+        <div class="card md-2">            
+            <h3 class="card-header">Summary:</h3>
+            <div class="card-body">
+                <p class="card-text">Items: 2</p>
+                <p class="card-text"><strong>Order Total: 300 EUR</strong></p>
+                
+                <a class="btn btn-dark" href="">Checkout</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
