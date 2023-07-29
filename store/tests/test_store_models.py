@@ -54,3 +54,7 @@ class CustomerModelsTest(StoreTestBase):
         # Validation
         with self.assertRaises(ValidationError):
             customer.full_clean()
+
+    def test_customer_string_represenation(self):
+        expected_string = 'testcustomer '
+        self.assertEqual(str(self.customer), expected_string)
