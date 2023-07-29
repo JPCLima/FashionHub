@@ -1,14 +1,14 @@
 from django.urls import path
-from .views import cart, checkout, product, productList, store
+from . import views
 
 # Namespacing of the app
 app_name = 'store'
 
 # Routes
 urlpatterns = [
-    path('', store, name='store'),
-    path('productList', productList, name='productList'),
-    path('product/<str:pk>', product, name='product'),
-    path('cart', cart, name='cart'),
-    path('checkout', checkout, name='checkout'),
+    path('', views.home, name='home'),
+    path('productList', views.productList, name='productList'),
+    path('product/<int:id>', views.product, name='product'),
+    path('cart', views.cart, name='cart'),
+    path('checkout', views.checkout, name='checkout'),
 ]
