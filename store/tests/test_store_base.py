@@ -8,14 +8,22 @@ class StoreTestBase(TestCase):
         self.customer = self.create_customer()
         return super().setUp()
 
-    def create_user(self):
+    def create_user(self,
+                    username='testuser',
+                    password='testpass'):
         return User.objects.create(
-            username='testuser',
-            password='testpass')
+            username=username,
+            password=password)
 
-    def create_customer(self):
+    def create_customer(self,
+                        user=None,
+                        name='testcustomer',
+                        email='testemail@email.com'):
+        if user is None:
+            user = {}
+
         return Customer.objects.create(
-            user=self.create_user(),
-            name='testcustomer',
-            email='testemail'
+            user=self.create_user(**user),
+            name=name,
+            email=email
         )
