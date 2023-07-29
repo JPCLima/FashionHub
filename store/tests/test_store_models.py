@@ -3,8 +3,8 @@ from django.core.exceptions import ValidationError
 from store.tests.test_store_base import StoreTestBase
 
 
-class CustomerModelsTest(StoreTestBase):
-    def test_customer_field_is_null_or_black(self):
+class CustomerModelTest(StoreTestBase):
+    def test_customer_field_is_null_or_blank(self):
         customer = Customer.objects.get(id=1)
         field = customer._meta.get_field('user')
         self.assertTrue(field.null)

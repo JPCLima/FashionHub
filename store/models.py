@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 
 
 class Customer(models.Model):
@@ -14,7 +15,39 @@ class Customer(models.Model):
         return self.name
 
 
-# User
+class Category(models.Model):
+
+    SHIRTS = 'Shirts'
+    SWEATER = 'Sweater'
+    T_SHIRT = 'T-shirt'
+    JACKET = 'Jacket'
+
+    CLOTHING_CATEGORIES = [
+        (SHIRTS, 'Shirts'),
+        (SWEATER, 'Sweater'),
+        (T_SHIRT, 'T-shirt'),
+        (JACKET, 'Jacket'),
+    ]
+
+    name = models.CharField(
+        max_length=65,
+        choices=CLOTHING_CATEGORIES)
+
+    def __str__(self):
+        return self.name
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    price = models.FloatField(validators=[MinValueValidator(0.0)])
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True,
+        default=None,
+    )
+
+    def __str__(self):
+        return self.name
+
 # Product
 # Order
 # OrderItem
