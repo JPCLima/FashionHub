@@ -56,5 +56,5 @@ class CustomerModelsTest(StoreTestBase):
             customer.full_clean()
 
     def test_customer_string_represenation(self):
-        expected_string = 'testcustomer '
+        expected_string = 'testcustomer'
         self.assertEqual(str(self.customer), expected_string)
