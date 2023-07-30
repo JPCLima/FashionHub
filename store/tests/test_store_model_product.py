@@ -1,6 +1,6 @@
 from store.tests.test_store_base import StoreTestBase
 from django.core.exceptions import ValidationError
-from store.models import Product, Category
+from store.models import Product
 
 
 class ProductModelTest(StoreTestBase):

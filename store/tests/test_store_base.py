@@ -36,6 +36,10 @@ class StoreTestBase(TestCase):
             email=email
         )
 
+    def create_category(self, name='Shirts'):
+        category = StoreTestBase.CLOTHING_CATEGORIES.get(name)
+        return Category.objects.create(name=category)
+
     def create_product(self,
                        name='Jacket',
                        price='20.99',
@@ -48,7 +52,3 @@ class StoreTestBase(TestCase):
             name=name,
             price=price,
             category=self.create_category(**category))
-
-    def create_category(self, name):
-        category = StoreTestBase.CLOTHING_CATEGORIES.get(name)
-        return Category.objects.create(name=category)

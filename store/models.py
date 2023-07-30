@@ -31,6 +31,7 @@ class Category(models.Model):
 
     name = models.CharField(
         max_length=65,
+        unique=True,
         choices=CLOTHING_CATEGORIES)
 
     def __str__(self):
@@ -48,7 +49,7 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-# Product
+
 # Order
 # OrderItem
 # Shipping
