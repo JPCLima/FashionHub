@@ -1,5 +1,5 @@
 from django.test import TestCase
-from store.models import Customer, Category, Product, Order
+from store.models import Customer, Category, Product, Order, OrderItem
 from django.contrib.auth.models import User
 
 
@@ -49,7 +49,6 @@ class StoreTestBase(TestCase):
                      customer=None,
                      date_ordered=None,
                      complete=False):
-
         if customer is None:
             customer = self.customer
 
@@ -57,4 +56,14 @@ class StoreTestBase(TestCase):
             customer=customer,
             date_ordered=date_ordered,
             complete=complete,
+        )
+
+    def create_order_item(self,
+                          product=None,
+                          order=None,
+                          quantity=1):
+        return OrderItem.objects.create(
+            product=self.product,
+            order=self.order,
+            quantity=0
         )
