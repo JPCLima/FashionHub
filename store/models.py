@@ -38,7 +38,7 @@ class Category(models.Model):
         choices=CLOTHING_CATEGORIES)
 
     class Meta:
-        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
     def __str__(self):
         return self.name
@@ -52,9 +52,6 @@ class Product(models.Model):
         default=None,
     )
 
-    class Meta:
-        verbose_name = "Product"
-
     def __str__(self):
         return self.name
 
@@ -67,9 +64,6 @@ class Order(models.Model):
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transation_id = models.CharField(max_length=100, null=True)
-
-    class Meta:
-        verbose_name = "Order"
 
     def __str__(self):
         return str(self.id)
@@ -86,9 +80,6 @@ class OrderItem(models.Model):
                                    null=True,
                                    blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = "OrderItem"
 
     def __str__(self):
         return self.product.name
@@ -108,9 +99,6 @@ class ShippingAddress(models.Model):
     state = models.CharField(max_length=200, null=True)
     zipcode = models.CharField(max_length=200, null=True)
     date_created = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = "ShippingAddress"
 
     def __str__(self):
         return self.customer.name
