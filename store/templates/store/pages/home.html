@@ -71,19 +71,19 @@
     <div class="d-flex justify-content-between align-items-center flex-column flex-lg-row my-5">
         <div class="position-relative m-2">
             <img src="{% static 'images/shirt7-1.jpg' %}" height="300" alt="shirts">
-            <a href="#" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Shirts</a>
+            <a href="{% url 'store:category' 1%}" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Shirts</a>
         </div>       
         <div class="position-relative m-2">
             <img src="{% static 'images/sweater1-1.jpg' %}" height="300" alt="shirts">
-            <a href="#" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Sweater</a>
+            <a href="{% url 'store:category' 2%}" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Sweater</a>
         </div>
         <div class="position-relative m-2">
             <img src="{% static 'images/tshirt1-1.jpg' %}" height="300" alt="shirts">
-            <a href="#" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Tshirt</a>
+            <a href="{% url 'store:category' 3%}" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Tshirt</a>
         </div>
         <div class="position-relative m-2">
             <img src="{% static 'images/jacket1-1.jpg' %}" height="300" alt="shirts">
-            <a href="#" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Jacket</a>
+            <a href="{% url 'store:category' 4%}" class="btn btn-light position-absolute start-0 bottom-0 ms-2 mb-2 d-block">Jacket</a>
         </div>        
 
     </div>

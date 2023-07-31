@@ -21,6 +21,16 @@ def product(request, id):
     return render(request, 'store/pages/product.html', context=context)
 
 
+def category(request, category_id):
+    products = get_list_or_404(
+        Product.objects.filter(
+            category__id=category_id
+        ).order_by('-id')
+    )
+    context = {'products': products}
+    return render(request, 'store/pages/product_list.html', context=context)
+
+
 def cart(request):
     context = {}
     return render(request, 'store/pages/cart.html', context=context)

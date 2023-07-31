@@ -2,19 +2,19 @@
 <footer class="d-flex justify-content-between my-5 text-start flex-wrap">
     <ul class="nav flex-column">
         <li class="fw-bold nav-item">
-            <a href="#" class="nav-link text-dark">Products</a>
+            <a href="{% url 'store:products' %}" class="nav-link text-dark">Products</a>
         </li>
         <li class="bw-bold nav-item">
-            <a href="#" class="nav-link text-muted">Shirt</a>
+            <a href="{% url 'store:category' 1%}" class="nav-link text-muted">Shirt</a>
         </li>
         <li class="bw-bold nav-item">
-            <a href="#" class="nav-link text-muted">Sweater</a>
+            <a href="{% url 'store:category' 2%}" class="nav-link text-muted">Sweater</a>
         </li>
         <li class="bw-bold nav-item">
-            <a href="#" class="nav-link text-muted">T-shirt</a>
+            <a href="{% url 'store:category' 3%}" class="nav-link text-muted">T-shirt</a>
         </li>
         <li class="bw-bold nav-item">
-            <a href="#" class="nav-link text-muted">Jacket</a>
+            <a href="{% url 'store:category' 4%}" class="nav-link text-muted">Jacket</a>
         </li>
     </ul>
     <ul class="nav flex-column">
