@@ -5,12 +5,12 @@ from store.tests.test_store_base import StoreTestBase
 
 class CategoryModelTest(StoreTestBase):
     def setUp(self) -> None:
-        self.category = self.create_category(name='Sweater')
+        self.category = self.create_category(name='Shirts')
         return super().setUp()
 
     def test_store_category_name_max_length_validation(self):
         category_name = self.category.name
-        self.assertEqual(category_name, 'Sweater')
+        self.assertEqual(category_name, 'Shirts')
 
     def test_store_category_name_max_length(self):
         category_maxlen = self.category._meta.get_field('name').max_length
@@ -24,12 +24,15 @@ class CategoryModelTest(StoreTestBase):
         with self.assertRaises(ValidationError):
             cat_no_name.full_clean()
 
-    def test_store_category_is_uniqiue(self):
-        cat_duplicate = self.create_category(name='Sweater')
+    def test_store_category_is_unique(self):
+        # Create a category
+        original_category = self.create_category(name='Test Shirts')
+        original_category.save()
 
+        # Attempt to create a duplicate category
+        duplicate_category = Category(name='Test Shirts')
         with self.assertRaises(ValidationError):
-            cat_duplicate.full_clean()
+            duplicate_category.full_clean()
 
     def test_customer_string_represenation(self):
-        expected_string = 'Sweater'
-        self.assertEqual(str(self.category), expected_string)
+        self.assertEqual(str(self.category), str(self.category.name))
