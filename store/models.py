@@ -51,7 +51,8 @@ class Product(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True,
         default=None,
     )
-    image = models.ImageField(default='', null=True, blank=True)
+    image = models.ImageField(upload_to='store/images/%Y/%m/%d/', blank=True, default='')
+
 
     def __str__(self):
         return self.name
