@@ -7,7 +7,7 @@ from store.models import Category
 class StoreProductListTest(StoreTestBase):
 
     def test_list_products_view_function_is_correct(self):
-        view = resolve(reverse('store:productList'))
+        view = resolve(reverse('store:products'))
         self.assertIs(view.func, views.productList)
 
     def test_list_products_view_loads_correct_template(self):
@@ -16,18 +16,18 @@ class StoreProductListTest(StoreTestBase):
         product.save()
 
         # Get response
-        response = self.client.get(reverse('store:productList'))
+        response = self.client.get(reverse('store:products'))
         self.assertTemplateUsed(response=response,
                                 template_name='store/pages/product_list.html')
 
     def test_list_products_view_get_status_200(self):
         product = self.create_product()
         product.save()
-        response = self.client.get(reverse('store:productList'))
+        response = self.client.get(reverse('store:products'))
         self.assertEqual(response.status_code, 200)
 
     def test_list_products_view_get_status_404(self):
-        response = self.client.get(reverse('store:productList'))
+        response = self.client.get(reverse('store:products'))
         self.assertEqual(response.status_code, 404)
 
     def test_product_list_view_loads_content(self):
@@ -35,7 +35,7 @@ class StoreProductListTest(StoreTestBase):
         self.create_product()
 
         # Get response
-        response = self.client.get(reverse('store:productList'))
+        response = self.client.get(reverse('store:products'))
         response_context = response.context['products']
 
         self.assertEqual(response_context[0].name, 'Black Shirt')

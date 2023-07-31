@@ -9,12 +9,12 @@ class StoreURLsTest(TestCase):
         self.assertEqual(home_url, '/')
 
     def test_store_product_list_url_is_correct(self):
-        product_list_url = reverse('store:productList')
-        self.assertEqual(product_list_url, '/productList/')
+        product_list_url = reverse('store:products')
+        self.assertEqual(product_list_url, '/products/')
 
     def test_store_product_details_url_is_correct(self):
         product_url = reverse('store:product', kwargs={'id': 1})
-        self.assertEqual(product_url, '/product/1')
+        self.assertEqual(product_url, '/products/1/')
 
     def test_store_cart_url_is_correct(self):
         cart_url = reverse('store:cart')
