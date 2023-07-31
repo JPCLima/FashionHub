@@ -33,3 +33,6 @@ class ShippingAddressModelTest(StoreTestBase):
         setattr(self.shipping_address, field, 'A' * (max_length + 1))
         with self.assertRaises(ValidationError):
             self.shipping_address.full_clean()
+
+    def test_store_order_item_string_represenation(self):
+        self.assertEqual(str(self.shipping_address), 'testcustomer')
