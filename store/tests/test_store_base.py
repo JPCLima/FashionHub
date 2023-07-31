@@ -1,5 +1,5 @@
 from django.test import TestCase
-from store.models import Customer, Category, Product, Order, OrderItem
+from store.models import Customer, Category, Product, Order, OrderItem, ShippingAddress  # noqa: E501
 from django.contrib.auth.models import User
 
 
@@ -66,4 +66,23 @@ class StoreTestBase(TestCase):
             product=self.product,
             order=self.order,
             quantity=0
+        )
+
+    def create_shipping_address(self,
+                                customer=None,
+                                order=None,
+                                address='addresstest',
+                                city='citytest',
+                                state='statetest',
+                                zipcode='123456'):
+        if customer is None:
+            customer = self.customer
+
+        return ShippingAddress(
+            customer=customer,
+            order=self.order,
+            address=address,
+            city=city,
+            state=state,
+            zipcode=zipcode
         )
