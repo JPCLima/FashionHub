@@ -23,60 +23,20 @@
     </div>
 
     <div class="col col-9 d-flex flex-wrap justify-content-between">
+
+        {% for product in products %}        
         <div class="card m-2">
             <a href="#">
                 <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
             </a>
                 <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
+                    <p class="card-text">{{product.name}}</p>
+                    <small class="text-secondary">
+                        {{product.price}} EUR
+                    </small>
                 </div>
-        </div>        
-        <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
-            </a>
-                <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
-                </div>
-        </div>        
-        <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
-            </a>
-                <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
-                </div>
-        </div>        
-        <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
-            </a>
-                <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
-                </div>
-        </div>        
-        <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
-            </a>
-                <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
-                </div>
-        </div>        
-        <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
-            </a>
-                <div class="card-body">
-                    <p class="card-text">Brown Jacket</p>
-                    <small class="text-secondary">29,99 EUR</small>
-                </div>
-        </div>        
+        </div>    
+        {% endfor %}   
     </div>
 
 </div>

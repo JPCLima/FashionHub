@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import get_list_or_404, render
+from .models import Product
 
 
 def home(request):
@@ -7,7 +8,10 @@ def home(request):
 
 
 def productList(request):
-    context = {}
+    products = get_list_or_404(
+        Product.objects.all().order_by('-id')
+    )
+    context = {'products': products}
     return render(request, 'store/pages/product_list.html', context=context)
 
 
