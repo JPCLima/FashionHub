@@ -1,4 +1,4 @@
-from django.shortcuts import get_list_or_404, render
+from django.shortcuts import get_list_or_404, get_object_or_404, render
 from .models import Product
 
 
@@ -15,8 +15,9 @@ def productList(request):
     return render(request, 'store/pages/product_list.html', context=context)
 
 
-def product(request, pk):
-    context = {}
+def product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    context = {'product': product}
     return render(request, 'store/pages/product.html', context=context)
 
 

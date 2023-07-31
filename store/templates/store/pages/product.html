@@ -5,28 +5,33 @@
 
 <div class="row py-5 g-5">
     <div class="col-12 col-lg-6">
-        <img    src="{% static 'images/jacket1-1.jpg' %}"  
-                class="m-1 w-100 sliderMainImage" 
-                data-bs-toggle="modal" 
-                data-bs-target="#imageModal" 
-                alt="product">
-        <div>
-            <img    src="{% static 'images/jacket1-2.jpg' %}"  
-                    width="60"
-                    class="m-1 sliderThumb"
-                    alt="product">
-                    <img    src="{% static 'images/jacket1-3.jpg' %}"  
-                    width="60"
-                    class="m-1 sliderThumb"
-                    alt="product">
-        </div>
-    </div>
+      {{product.id}}
+
+      {% if product.image %}      
+      <img    src="{{ product.image.url }}"  
+      class="m-1 w-100 sliderMainImage" 
+      data-bs-toggle="modal" 
+      data-bs-target="#imageModal" 
+      alt="product">
+      {% endif %}
+      
+      {% comment %} <div>
+        <img    src="{% static 'images/jacket1-2.jpg' %}"  
+        width="60"
+        class="m-1 sliderThumb"
+        alt="product">
+        <img    src="{% static 'images/jacket1-3.jpg' %}"  
+        width="60"
+        class="m-1 sliderThumb"
+        alt="product">
+        </div> {% endcomment %}
+      </div>
 
     <div class="col-12 col-lg-6">
-        <h2 id="productName">Brown Jacket</h2>
+        <h2 id="productName">{{product.name}}</h2>
         <small class="text-muted">Article: 24344</small>
         <h4 class="my-4">EUR
-            <span id="price">149</span>
+            <span id="price">{{product.price}}</span>
             €
         </h4>
         <lable class="text-muted" for="selectedSize" id="size">Size: </lable>
@@ -50,31 +55,19 @@
                       </h2>
                       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          Introducing our premium shirt, crafted with utmost care and precision. Made from soft and breathable cotton fabric, this shirt guarantees comfort throughout the day. Its versatile design effortlessly transitions from casual to formal occasions, making it a wardrobe essential. Embrace style and sophistication with our timeless shirt that promises to elevate your fashion game.
                         </div>
                       </div>
                     </div>
                     <div class="accordion-item">
                       <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          Availability in the store
+                          Delivery and returns
                         </button>
                       </h2>
                       <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Delivery and returns
-                        </button>
-                      </h2>
-                      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          At Fashionhub, we are committed to providing a seamless shopping experience. Enjoy swift and reliable delivery of your favorite fashion pieces right to your doorstep. Our hassle-free returns policy ensures you can shop with confidence, allowing you to exchange or return items effortlessly. Your satisfaction is our top priority, making Fashionhub your ultimate destination for stylish and stress-free shopping.
                         </div>
                       </div>
                     </div>
@@ -86,10 +79,10 @@
                       </h2>
                       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                          Discover the perfect fit with our size guide. We understand the importance of finding the right size for your body shape, which is why our comprehensive size chart ensures a tailored fit every time. Embrace confidence in clothes that flatter your silhouette and provide unparalleled comfort. From S to XXL, we've got you covered with sizes that embrace all body types. Shop with ease, knowing you'll look and feel your best in our thoughtfully designed garments.
                         </div>
                       </div>
-                    </div>
+                    </div>                    
                   </div>
             </div>
         </div>        

@@ -26,16 +26,15 @@
 
         {% for product in products %}        
         <div class="card m-2">
-            
-            {% if  product.image %}
+            {% if  product.image %}            
             <a href="{% url 'store:product' product.id %}">  
                 <img src="{{ product.image.url }}" 
-                class="card-img-top" heighst="300" alt="product">
+                class="card-img-top" height="300" alt="product">
             </a>
             {% endif %}
-            <div class="card-body">
-                <p class="card-text">{{product.name}}</p>
-                <small class="text-secondary">
+                <div class="card-body">
+                    <p class="card-text">{{product.name}}</p>
+                    <small class="text-secondary">
                         {{product.price|floatformat:2}} EUR
                     </small>
                 </div>
