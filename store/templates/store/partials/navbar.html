@@ -15,7 +15,7 @@
                         <i class="fa fa-search"></i>
                     </button>
                 </form>
-                <a href="" class="navbar-brand d-none d-lg-block">FashionHub</a>
+                <a href="{% url 'store:home' %}" class="navbar-brand d-none d-lg-block">FashionHub</a>
                 <ul class="navbar">
                     <li class="nav-item d-flex align-items-center">
                         <a href="#" class="nav-link mx-2">
@@ -24,7 +24,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
-                        <a href="#" class="nav-link mx-2">
+                        <a href="{% url 'store:cart' %}" class="nav-link mx-2">
                             <i class="fa fa-shopping-bag"></i>
                             Bag
                         </a>
