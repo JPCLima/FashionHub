@@ -10,7 +10,7 @@ class StoreURLsTest(TestCase):
 
     def test_store_product_list_url_is_correct(self):
         product_list_url = reverse('store:productList')
-        self.assertEqual(product_list_url, '/productList')
+        self.assertEqual(product_list_url, '/productList/')
 
     def test_store_product_details_url_is_correct(self):
         product_url = reverse('store:product', kwargs={'id': 1})

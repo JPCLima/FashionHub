@@ -51,6 +51,7 @@ class Product(models.Model):
         Category, on_delete=models.SET_NULL, null=True, blank=True,
         default=None,
     )
+    image = models.ImageField(default='', null=True, blank=True)
 
     def __str__(self):
         return self.name

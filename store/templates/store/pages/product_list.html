@@ -26,13 +26,14 @@
 
         {% for product in products %}        
         <div class="card m-2">
-            <a href="#">
-                <img src="{% static 'images/jacket1-1.jpg' %}"  class="card-img-top" height="300" alt="product">
+            <a href="#">  
+                <img src="{{ product.image.url }}" 
+                    class="card-img-top" height="300" alt="product">
             </a>
                 <div class="card-body">
                     <p class="card-text">{{product.name}}</p>
                     <small class="text-secondary">
-                        {{product.price}} EUR
+                        {{product.price|floatformat:2}} EUR
                     </small>
                 </div>
         </div>    
