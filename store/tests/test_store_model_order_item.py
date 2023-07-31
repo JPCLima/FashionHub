@@ -17,7 +17,7 @@ class OrderItemModelTest(StoreTestBase):
         self.assertEqual(self.order_item.order.customer.name, 'testcustomer')
         self.assertEqual(self.order_item.quantity, 0)
 
-    def test_store_order_item_quantity_blanl_null(self):
+    def test_store_order_item_quantity_blank_null(self):
         field_quantity = self.order_item._meta.get_field('quantity')
         self.assertTrue(field_quantity.blank)
         self.assertTrue(field_quantity.null)
