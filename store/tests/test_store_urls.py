@@ -22,8 +22,8 @@ class StoreURLsTest(TestCase):
 
     def test_store_cart_url_is_correct(self):
         cart_url = reverse('store:cart')
-        self.assertEqual(cart_url, '/cart')
+        self.assertEqual(cart_url, '/cart/')
 
     def test_store_checkout_url_is_correct(self):
         checkout_url = reverse('store:checkout')
-        self.assertEqual(checkout_url, '/checkout')
+        self.assertEqual(checkout_url, '/checkout/')
