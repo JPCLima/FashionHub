@@ -17,13 +17,15 @@
                 <th>Quantity</th>
                 <th>Total</th>
             </th>
-            <tr>
-                <td></td>
-                <td>Brown Jacket</td>
-                <td>150 €</td>
-                <td>2</td>
-                <td>300 €</td>
-            </tr>
+            {% for item in items %}
+                <tr>
+                    <td></td>
+                    <td>{{item.product.name}}</td>
+                    <td>{{item.product.price|floatformat:2}} €</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.get_total}} €</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
     <div class="col col-3 text-start">
@@ -31,10 +33,15 @@
         <div class="card md-2">            
             <h3 class="card-header">Summary:</h3>
             <div class="card-body">
-                <p class="card-text">Items: 2</p>
-                <p class="card-text"><strong>Order Total: 300 EUR</strong></p>
-                
-                <a class="btn btn-dark" href="">Checkout</a>
+                <p class="card-text">
+                    Items: {{order.get_cart_items}}
+                </p>
+                <p class="card-text">
+                    <strong>
+                        Order Total: {{order.get_cart_total|floatformat:2}} EUR
+                    </strong>
+                </p>
+                <a class="btn btn-dark" href="{% url 'store:checkout' %}">Checkout</a>
             </div>
         </div>
 

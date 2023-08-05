@@ -1,5 +1,5 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
-from .models import Product
+from .models import Product, Order, Customer
 
 
 def home(request):
@@ -32,10 +32,38 @@ def category(request, category_id):
 
 
 def cart(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = Customer.objects.get(user=request.user)
+        order, _ = Order.objects.get_or_create(
+            customer=customer,
+            complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0,
+                 'get_cart_items': 0}
+
+    context = {
+        'order': order,
+        'items': items
+        }
     return render(request, 'store/pages/cart.html', context=context)
 
 
 def checkout(request):
-    context = {}
+    if request.user.is_authenticated:
+        customer = get_object_or_404(Customer, user=request.user)
+        order, _ = Order.objects.get_or_create(
+            customer=customer,
+            complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {'get_cart_total': 0,
+                 'get_cart_items': 0}
+
+    context = {
+        'order': order,
+        'items': items
+        }
     return render(request, 'store/pages/checkout.html', context=context)

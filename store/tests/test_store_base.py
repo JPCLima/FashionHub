@@ -65,7 +65,7 @@ class StoreTestBase(TestCase):
         return OrderItem.objects.create(
             product=self.product,
             order=self.order,
-            quantity=0
+            quantity=quantity
         )
 
     def create_shipping_address(self,

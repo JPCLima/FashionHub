@@ -36,41 +36,38 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-dark">Continue</button>
-                </form>
+            </form>
         </div>
         </div>
         <div class="col-lg-6 col-md-8 col-sm-10">
             <div class="card">
                 <div class="card-header">
-                    <a href="" class="btn btn-outline-dark btn-sm float-start">&#x2190; Back To Cart</a>
+                    <a href="{% url 'store:cart' %}" class="btn btn-outline-dark btn-sm float-start">&#x2190; Back To Cart</a>
                     <h3 class="text-center">Summary</h3>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <th>
-                            
                             <th>Item</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Total</th>
                         </th>
+                        {% for item in items %}
                         <tr>
                             <td></td>
-                            <td>Brown Jacket</td>
-                            <td>150 €</td>
-                            <td>2</td>
-                            <td>300 €</td>
+                            <td>{{item.product.name}}</td>
+                            <td>{{item.product.price|floatformat:2}} €</td>
+                            <td>{{item.quantity}}</td>
+                            <td>{{item.get_total}} €</td>
                         </tr>
-                        <tr>
-                            <td></td>
-                            <td>Blue Jacket</td>
-                            <td>150 €</td>
-                            <td>1</td>
-                            <td>150 €</td>
-                        </tr>
+                        {% endfor %}
                     </table>
-                    <p class="card-text"><strong>Order Total: 450 EUR</strong></p>
-                    <a class="btn btn-dark" href="">Checkout</a>
+                    <p class="card-text">
+                        <strong>
+                            Order Total: {{order.get_cart_total|floatformat:2}} EUR
+                        </strong>
+                    </p>                    
                 </div>
             </div>
         </div>
