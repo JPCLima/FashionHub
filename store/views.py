@@ -1,5 +1,9 @@
 from django.shortcuts import get_list_or_404, get_object_or_404, render
-from .models import Product, Order, Customer
+from .models import Product, Order, OrderItem, Customer
+from django.db.models import Sum
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 def home(request):
@@ -67,3 +71,33 @@ def checkout(request):
         'items': items
         }
     return render(request, 'store/pages/checkout.html', context=context)
+
+
+def update_item(request):
+    data = json.loads(request.body)
+    productId = data['productId']
+    action = data['action']
+
+    customer = get_object_or_404(Customer, user=request.user)
+    product = Product.objects.get(id=productId)
+    order, _ = Order.objects.get_or_create(
+            customer=customer,
+            complete=False)
+
+    orderItem, _ = OrderItem.objects.get_or_create(
+        order=order,
+        product=product
+    )
+
+    if action == 'add':
+        orderItem.quantity = (orderItem.quantity + 1)
+    elif action == 'remove':
+        orderItem.quantity = (orderItem.quantity - 1)
+
+    orderItem.save()
+    print(orderItem)
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse('Update Item', safe=False)

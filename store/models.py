@@ -4,7 +4,7 @@ from django.core.validators import MinValueValidator
 
 
 class Customer(models.Model):
-    user = models.ForeignKey(User,
+    user = models.OneToOneField(User,
                              null=True,
                              blank=True,
                              on_delete=models.CASCADE)
@@ -16,6 +16,9 @@ class Customer(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_cart(self):
+        return self.order_set.filter(complete=False).first()
 
 
 class Category(models.Model):
@@ -70,17 +73,15 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
+ 
+    @property
+    def get_cart_items(self):
+        return sum(item.quantity for item in self.orderitem_set.all())
 
     @property
     def get_cart_total(self):
         order_items = self.orderitem_set.all()
         total = sum([item.get_total for item in order_items])
-        return total
-
-    @property
-    def get_cart_items(self):
-        order_items = self.orderitem_set.all()
-        total = sum([item.quantity for item in order_items])
         return total
 
 

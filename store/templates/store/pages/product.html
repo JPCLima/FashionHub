@@ -5,7 +5,6 @@
 
 <div class="row py-5 g-5">
     <div class="col-12 col-lg-6">
-      {{product.id}}
 
       {% if product.image %}      
       <img    src="{{ product.image.url }}"  
@@ -14,17 +13,7 @@
       data-bs-target="#imageModal" 
       alt="product">
       {% endif %}
-      
-      {% comment %} <div>
-        <img    src="{% static 'images/jacket1-2.jpg' %}"  
-        width="60"
-        class="m-1 sliderThumb"
-        alt="product">
-        <img    src="{% static 'images/jacket1-3.jpg' %}"  
-        width="60"
-        class="m-1 sliderThumb"
-        alt="product">
-        </div> {% endcomment %}
+     
       </div>
 
     <div class="col-12 col-lg-6">
@@ -42,7 +31,13 @@
             <option value="3">XXL</option>
         </select>
         <div class="d-grid my-4">
-            <button class="btn btn-dark btn-lg" type="button" id="bagBtn">Add to Bag</button>
+            <button class="btn btn-dark btn-lg update-cart"
+                    data-product="{{product.id}}" 
+                    data-action="add" 
+                    type="button"
+                    id="bagBtn">
+                    Add to Bag
+                  </button>
         </div>
         <div class="accordion">
             <div class="accordion-item">

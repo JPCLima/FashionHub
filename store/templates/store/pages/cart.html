@@ -22,8 +22,22 @@
                     <td></td>
                     <td>{{item.product.name}}</td>
                     <td>{{item.product.price|floatformat:2}} €</td>
-                    <td>{{item.quantity}}</td>
-                    <td>{{item.get_total}} €</td>
+                    <td class="quantity-vertical">
+                        {{item.quantity}}
+                        <div class="quantity">
+                            <a class="quantity-update update-cart"
+                            data-product="{{item.product.id}}"
+                            data-action="add">
+                           <strong>&and;</strong>
+                            </a>
+                            <a class="quantity-update update-cart"
+                            data-product="{{item.product.id}}"
+                            data-action="remove">
+                            <strong>&or;</strong>
+                            </a>
+                        </div>
+                    </td>
+                    <td>{{item.get_total|floatformat:2}} €</td>
                 </tr>
             {% endfor %}
         </table>

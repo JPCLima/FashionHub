@@ -28,7 +28,13 @@
                             <i class="fa fa-shopping-bag"></i>
                             Bag
                         </a>
-                        <span class="badge rounded-pill bg-secondary">0</span>
+                        <span class="badge rounded-pill bg-secondary">
+                            {% if user.is_authenticated %}
+                            {{ request.user.customer.get_cart.get_cart_items }}
+                            {% else %}
+                            0                            
+                            {% endif %}
+                        </span>
                     </li>
                 </ul>
             </div>

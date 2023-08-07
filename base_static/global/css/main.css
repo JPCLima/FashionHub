@@ -22,3 +22,30 @@ body {
 .dark-filter {
     filter: brightness(80%) opacity(0.85);
 }
+
+/* Quantity */
+.quantity-vertical{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quantity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+.quantity-update {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.quantity-update:hover {
+    font-weight: 700;
+    color: rgb(80, 80, 80);
+}
