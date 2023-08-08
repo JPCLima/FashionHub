@@ -8,6 +8,7 @@ from utils.transaction import generate_transation_id
 from .models import Product, Order, OrderItem, Customer
 from .forms import ShippingAddressForm
 from django.db.models import Q
+from django.contrib import messages
 
 
 def home(request):
@@ -128,8 +129,11 @@ def search(request):
         Q(name__icontains=search_term)
     ).order_by('-id')
 
+    if not products.exists():
+        messages.info(request, 'No results...😢')
+
     context = {
-        'products': products
+        'products': products,
         }
 
     return render(request,

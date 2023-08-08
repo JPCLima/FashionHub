@@ -50,3 +50,10 @@ body {
     color: rgb(80, 80, 80);
 }
 
+/* Messages */
+.message {
+    text-align: center;
+    font-size: 18px;
+    padding: 1rem;
+    color: #444;
+  }
