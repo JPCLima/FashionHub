@@ -7,6 +7,7 @@ from django.shortcuts import (get_list_or_404,
 from utils.transaction import generate_transation_id
 from .models import Product, Order, OrderItem, Customer
 from .forms import ShippingAddressForm
+from django.db.models import Q
 
 
 def home(request):
@@ -114,3 +115,23 @@ def update_item(request):
         orderItem.delete()
 
     return JsonResponse('Update Item', safe=False)
+
+
+def search(request):
+
+    search_term = request.GET.get('q', '').strip()
+
+    print('search_term')
+    print(search_term)
+
+    products = Product.objects.filter(
+        Q(name__icontains=search_term)
+    ).order_by('-id')
+
+    context = {
+        'products': products
+        }
+
+    return render(request,
+                  'store/pages/product_list.html',
+                  context=context)
