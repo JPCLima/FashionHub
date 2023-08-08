@@ -24,7 +24,7 @@
                             Bag
                         </a>
                         <span class="badge rounded-pill bg-secondary">
-                            {% if user.is_authenticated %}
+                            {% if user.is_authenticated and  request.user.customer.get_cart %}
                             {{ request.user.customer.get_cart.get_cart_items }}
                             {% else %}
                             0                            

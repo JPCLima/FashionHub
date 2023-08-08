@@ -61,29 +61,39 @@ def cart(request):
 
 def checkout(request):
 
-    if request.POST:
-        form = ShippingAddressForm(request.POST)
+    if request.user.is_authenticated:
         customer = get_object_or_404(Customer, user=request.user)
         order, _ = Order.objects.get_or_create(
             customer=customer,
             complete=False)
+        items = order.orderitem_set.all()
 
-        if form.is_valid():
-            shipping = form.save(commit=False)
+        if request.POST:
+            form = ShippingAddressForm(request.POST)
 
-            # Register transation_id in order
-            order.transation_id = generate_transation_id()
-            order.complete = True
-            order.save()
+            if form.is_valid() and items.count() > 0:
+                shipping = form.save(commit=False)
 
-            # Add fields that are not in form
-            shipping.customer = customer
-            shipping.order = order
-            shipping.save()
-            return redirect('store:home')
+                # Register transation_id in order
+                order.transation_id = generate_transation_id()
+                order.complete = True
+                order.save()
+
+                # Add fields that are not in form
+                shipping.customer = customer
+                shipping.order = order
+                shipping.save()
+                return redirect('store:home')
+
+    else:
+        items = []
+        order = {'get_cart_total': 0,
+                 'get_cart_items': 0}
 
     context = {
         'form': ShippingAddressForm(),
+        'order': order,
+        'items': items
         }
     return render(request, 'store/pages/checkout.html', context=context)
 
