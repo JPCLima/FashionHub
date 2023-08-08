@@ -1,9 +1,12 @@
-from django.shortcuts import get_list_or_404, get_object_or_404, render
-from .models import Product, Order, OrderItem, Customer
-from django.db.models import Sum
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 import json
+from django.http import JsonResponse
+from django.shortcuts import (get_list_or_404,
+                              get_object_or_404,
+                              redirect,
+                              render)
+from utils.transaction import generate_transation_id
+from .models import Product, Order, OrderItem, Customer
+from .forms import ShippingAddressForm
 
 
 def home(request):
@@ -55,20 +58,30 @@ def cart(request):
 
 
 def checkout(request):
-    if request.user.is_authenticated:
+
+    if request.POST:
+        form = ShippingAddressForm(request.POST)
         customer = get_object_or_404(Customer, user=request.user)
         order, _ = Order.objects.get_or_create(
             customer=customer,
             complete=False)
-        items = order.orderitem_set.all()
-    else:
-        items = []
-        order = {'get_cart_total': 0,
-                 'get_cart_items': 0}
+
+        if form.is_valid():
+            shipping = form.save(commit=False)
+
+            # Register transation_id in order
+            order.transation_id = generate_transation_id()
+            order.complete = True
+            order.save()
+
+            # Add fields that are not in form
+            shipping.customer = customer
+            shipping.order = order
+            shipping.save()
+            return redirect('store:home')
 
     context = {
-        'order': order,
-        'items': items
+        'form': ShippingAddressForm(),
         }
     return render(request, 'store/pages/checkout.html', context=context)
 

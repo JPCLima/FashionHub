@@ -5,9 +5,9 @@ from django.core.validators import MinValueValidator
 
 class Customer(models.Model):
     user = models.OneToOneField(User,
-                             null=True,
-                             blank=True,
-                             on_delete=models.CASCADE)
+                                null=True,
+                                blank=True,
+                                on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=200)
 
@@ -73,7 +73,7 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
- 
+
     @property
     def get_cart_items(self):
         return sum(item.quantity for item in self.orderitem_set.all())
